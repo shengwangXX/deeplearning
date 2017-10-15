@@ -7,36 +7,36 @@ TensorFlow 由Google大脑主导开发，是一个异构分布式系统上的大
 ### PyTorch
 PyTorch 从Torch发展而来，并经过了大量优化，由FaceBook AI 团队主导开发。不同于TensorFlow，PyTorch采用动态计算图的方式，并提供良好的python接口，代码简单灵活。内存分配经过了优化，也能支持分布式训练。
 # 青云深度学习平台
-青云不仅提供GPU主机（CUDA8.0 + cudnn5），并搭建好了深度学习平台供用户使用。平台上集成了原始的Caffe，TensorFlow，PyTorch，省去了用户搭建环境的麻烦，提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，并能动态扩展所需资源。
+青云不仅提供GPU主机（CUDA8.0 + cudnn5），并搭建好了深度学习平台供用户使用。平台上集成了原始的Caffe, TensorFlow, PyTorch, 省去了用户搭建环境的麻烦，提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，并能动态扩展所需资源。
 ### Caffe 测试示例
 Caffe支持python 接口，用户也可以根据需要重新配置编译。目前不支持分布式训练。
 ####单机
-单机示例：
-cd  /home/ubuntu/caffe
+单机示例：  
+cd /home/ubuntu/caffe  
 ./build/tools/caffe train --solver=examples/mnist/lenet_solver.prototxt
 ### TensorFlow 测试示例
 TensorFlow 版本号为1.1，支持单机和分布式训练。
 #### 单机：
-cd /home/ubuntu/tensorflow
+cd /home/ubuntu/tensorflow  
 python mnist.py
 #### 分布式：
-（修改对应的IP地址和端口号）
-节点1：
-cd /home/ubuntu/tensorflow
-python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=ps --task_index=0
-python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=worker --task_index=0
-节点2：
-cd /home/ubuntu/tensorflow
+（修改对应的IP地址）  
+节点1：  
+cd /home/ubuntu/tensorflow  
+python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=ps --task_index=0  
+python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=worker --task_index=0  
+节点2：  
+cd /home/ubuntu/tensorflow  
 python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=worker --task_index=1
 
 ### PyTorch 测试示例
 #### 单机 
-cd /home/ubuntu/pytorch 
+cd /home/ubuntu/pytorch  
 python mnist.py
 #### 分布式
-节点1：
-cd /home/ubuntu/pytorch 
-python mnist_dist.py
-节点2：
-cd /home/ubuntu/pytorch 
+节点1：  
+cd /home/ubuntu/pytorch   
+python mnist_dist.py  
+节点2：  
+cd /home/ubuntu/pytorch   
 python mnist_dist.py
