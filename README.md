@@ -1,42 +1,103 @@
-# 深度学习简介
-2016 年AlphaGo 战胜李世石，预示我们进入了AI时代。深度学习AI的核心技术，在图像分类，自然语言处理，语音识别，无人驾驶等众多领域显示出了强大的能力，各大巨头纷纷投入巨资研发。语音助手，人脸识别，外文翻译等等，AI已融入到了我们生活的方方面面，极大了促进了社会的发展。其中Caffe, TensorFlow, PyTorch 是主流的深度学习框架，拥有强大的社区支持，是实践深度学习的不可或缺的工具。
-### Caffe
-Caffe 是一个被广泛使用的深度学习框架，由BVLC开发。Cafffe 容易上手，训练速度快，组件模块化，并拥有大量的训练好的经典模型。Caffe 在GPU上训练的性能很好，但只能支持单机多GPU的训练，不支持分布式的训练。
+# DeepLearning on QingCloud AppCenter 用户指南
+## 深度学习简介
+2016年AlphaGo战胜李世石，预示我们进入了AI时代。深度学习是AI的核心技术，在图像分类，自然语言处理，无人驾驶等众多领域显示出了强大的能力，各大巨头纷纷投入巨资研发。语音助手，人脸识别，外文翻译等等，AI已融入到了我们生活的方方面面，极大了促进了社会的发展。其中Caffe, TensorFlow, PyTorch是主流的深度学习框架，拥有强大的社区支持，是实践深度学习的不可或缺的工具。  
+###caffe
+Caffe是一个被广泛使用的深度学习框架，由BVLC开发。Caffe容易上手，训练速度快，组件模块化，并拥有大量训练好的经典模型。Caffe 在GPU上训练的性能很好，但只能支持单机多GPU的训练，不支持分布式多机训练。
 ### TensorFlow
-TensorFlow 由Google大脑主导开发，是一个异构分布式系统上的大规模深度学习框架。移植性好，可以运行在移动设备上，并支持分布式多机多卡训练，支持多种深度学习模型。TensorFlow 还有功能强大的可视化组件TensorBoard，能可视化网络结构和训练过程，对于观察复杂的网络结构和监控长时间、大规模的训练很有帮助。
+TensorFlow由Google大脑主导开发，是一个分布式系统上的大规模深度学习框架。移植性好，可以运行在移动设备上，并支持分布式多机多卡训练，支持多种深度学习模型。TensorFlow还有功能强大的可视化组件TensorBoard，能可视化网络结构和训练过程，对于观察复杂的网络结构和监控长时间、大规模的训练很有帮助。
 ### PyTorch
-PyTorch 从Torch发展而来，并经过了大量优化，由FaceBook AI 团队主导开发。不同于TensorFlow，PyTorch采用动态计算图的方式，并提供良好的python接口，代码简单灵活。内存分配经过了优化，也能支持分布式训练。
+PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主导开发。不同于TensorFlow，PyTorch采用动态计算图的方式，并提供良好的python接口，代码简单灵活，使用起来非常方便。内存分配也经过了优化，能支持分布式多机训练。
 # 青云深度学习平台
-青云不仅提供GPU主机（CUDA8.0 + cudnn5），并搭建好了深度学习平台供用户使用。平台上集成了原始的Caffe, TensorFlow, PyTorch, 省去了用户搭建环境的麻烦，提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，并能动态扩展所需资源。
+青云提供了GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，集成了原生的Caffe， TensorFlow， PyTorch， 省去了用户搭建环境的麻烦， 提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
+
+## 部署DeepLearning服务
+
+### 第1步：基本设置
+
+![第1步：基本设置](../../images/DeepLearning/basic_config.png)
+
+填写服务`名称`和`描述`，选择版本
+
+### 第2步：dl(deep learning)节点设置
+
+![第2步：节点设置](../../images/DeepLearning/dl_node_config.png)
+
+填写节点CPU、GPU、内存、节点类型、节点个数、数据盘大小等配置信息。
+
+### 第3步：网络设置
+
+![第3步：网络设置](../../images/DeepLearning/network_config.png)
+
+出于安全考虑，所有的集群都需要部署在私有网络中，选择自己创建的已连接路由器的私有网络中
+
+## DeepLearning 测试
+以MNIST数据集为例，分别测试caffe, tensorflow, pytorch。MNIST数据集包含 0-9 10个数字，
+训练集包含50000张，测试集包含10000张。
+> deep learning 训练往往需要大量的数据，数据存储往往需要很大的空间。青云QingStor可以存储海量数据，
+用户可以方便的把数据放在QingStor，使用QingStor命令行工具快速的下载到本地
+DeepLearning与QingStor命令行工具集成，[安装](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html)
+QingStor命令行工具，可以方便的从QingStor拉取数据
+从QingStor获取数据：  
+```shell
+cd /home/ubuntu/tensorflow  
+mkdir data   
+qsctl cp -r qs://mydata/ data/
+```
+
 ### Caffe 测试示例
-Caffe支持python 接口，用户也可以根据需要重新配置编译。目前不支持分布式训练。
+Caffe支持python接口，用户也可以根据需要重新配置编译，目前不支持多机分布式训练。
 ####单机
 单机示例：  
+```shell
 cd /home/ubuntu/caffe  
 ./build/tools/caffe train --solver=examples/mnist/lenet_solver.prototxt
+```
+![caffe 训练过程](../../images/DeepLearning/caffe_train.png)   
+![caffe 训练结果](../../images/DeepLearning/caffe_result.png)
 ### TensorFlow 测试示例
-TensorFlow 版本号为1.1，支持单机和分布式训练。
+TensorFlow 版本号为1.1，支持单机和分布式训练。  
 #### 单机：
+```shell
 cd /home/ubuntu/tensorflow  
 python mnist.py
+```
+![tensorflow 训练结果](../../images/DeepLearning/tensorflow_result.png)  
+
 #### 分布式：
-（修改对应的IP地址）  
+增加节点，在线扩容
+可以在详情页点击 `新增节点` 按钮，可以对每个新增节点指定 IP 或选择自动分配。
+![tensorflow 增加节点](../../images/DeepLearning/tensorflow_add_node.png)  
+Tensorflow 分布式训练需要制定parameter server 和 worker的IP地址和端口号（根据自己的IP进行修改
+下面是一个parameter server 和两个 worker 分布式训练。  
 节点1：  
+```shell
 cd /home/ubuntu/tensorflow  
 python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=ps --task_index=0  
 python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=worker --task_index=0  
-节点2：  
+```
+节点2：
+```shell
 cd /home/ubuntu/tensorflow  
 python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=worker --task_index=1
-
+```
+![tensorflow 分布式训练结果](../../images/DeepLearning/tensorfow_cluster_result.png)
+![tensorflow board展示结果](../../images/DeepLearning/tensorfow_tensorboard.png)
 ### PyTorch 测试示例
 #### 单机 
+```shell
 cd /home/ubuntu/pytorch  
 python mnist.py
+```
+![pytorch 训练结果](../../images/DeepLearning/pytorch_result.png)
 #### 分布式
 节点1：  
+```shell
 cd /home/ubuntu/pytorch   
 python mnist_dist.py  
-节点2：  
+```
+节点2：
+```shell
 cd /home/ubuntu/pytorch   
 python mnist_dist.py
+```
+![pytorch 分布式训练结果](../../images/DeepLearning/pytorch_cluster_result.png)
