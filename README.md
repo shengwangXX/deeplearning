@@ -14,19 +14,19 @@ PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主
 
 ### 第1步：基本设置
 
-![第1步：基本设置](../../images/DeepLearning/basic_config.png)
+![第1步：基本设置](./images/DeepLearning/basic_config.png)
 
 填写服务`名称`和`描述`，选择版本
 
 ### 第2步：dl(deep learning)节点设置
 
-![第2步：节点设置](../../images/DeepLearning/dl_node_config.png)
+![第2步：节点设置](./images/DeepLearning/dl_node_config.png)
 
 填写节点CPU、GPU、内存、节点类型、节点个数、数据盘大小等配置信息。
 
 ### 第3步：网络设置
 
-![第3步：网络设置](../../images/DeepLearning/network_config.png)
+![第3步：网络设置](./images/DeepLearning/network_config.png)
 
 出于安全考虑，所有的集群都需要部署在私有网络中，选择自己创建的已连接路由器的私有网络中
 
@@ -52,8 +52,8 @@ Caffe支持python接口，用户也可以根据需要重新配置编译，目前
 cd /home/ubuntu/caffe  
 ./build/tools/caffe train --solver=examples/mnist/lenet_solver.prototxt
 ```
-![caffe 训练过程](../../images/DeepLearning/caffe_train.png)   
-![caffe 训练结果](../../images/DeepLearning/caffe_result.png)
+![caffe 训练过程](./images/DeepLearning/caffe_train.png)   
+![caffe 训练结果](./images/DeepLearning/caffe_result.png)
 ### TensorFlow 测试示例
 TensorFlow 版本号为1.1，支持单机和分布式训练。  
 #### 单机：
@@ -61,12 +61,12 @@ TensorFlow 版本号为1.1，支持单机和分布式训练。
 cd /home/ubuntu/tensorflow  
 python mnist.py
 ```
-![tensorflow 训练结果](../../images/DeepLearning/tensorflow_result.png)  
+![tensorflow 训练结果](./images/DeepLearning/tensorflow_result.png)  
 
 #### 分布式：
 增加节点，在线扩容
 可以在详情页点击 `新增节点` 按钮，可以对每个新增节点指定 IP 或选择自动分配。
-![tensorflow 增加节点](../../images/DeepLearning/tensorflow_add_node.png)  
+![tensorflow 增加节点](./images/DeepLearning/tensorflow_add_node.png)  
 Tensorflow 分布式训练需要制定parameter server 和 worker的IP地址和端口号（根据自己的IP进行修改
 下面是一个parameter server 和两个 worker 分布式训练。  
 节点1：  
@@ -80,15 +80,15 @@ python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223
 cd /home/ubuntu/tensorflow  
 python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223,192.168.1.7:2223 --job_name=worker --task_index=1
 ```
-![tensorflow 分布式训练结果](../../images/DeepLearning/tensorfow_cluster_result.png)
-![tensorflow board展示结果](../../images/DeepLearning/tensorfow_tensorboard.png)
+![tensorflow 分布式训练结果](./images/DeepLearning/tensorfow_cluster_result.png)
+![tensorflow board展示结果](./images/DeepLearning/tensorfow_tensorboard.png)
 ### PyTorch 测试示例
 #### 单机 
 ```shell
 cd /home/ubuntu/pytorch  
 python mnist.py
 ```
-![pytorch 训练结果](../../images/DeepLearning/pytorch_result.png)
+![pytorch 训练结果](./images/DeepLearning/pytorch_result.png)
 #### 分布式
 节点1：  
 ```shell
@@ -100,4 +100,4 @@ python mnist_dist.py
 cd /home/ubuntu/pytorch   
 python mnist_dist.py
 ```
-![pytorch 分布式训练结果](../../images/DeepLearning/pytorch_cluster_result.png)
+![pytorch 分布式训练结果](./images/DeepLearning/tensorflow_cluster_result.png)
