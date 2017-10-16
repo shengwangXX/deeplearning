@@ -86,7 +86,7 @@ python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223
 tensorflow 分布式训练结果  
 ![tensorflow 分布式训练结果](./images/DeepLearning/tensorflow_cluster_result.png)  
 tensorboard展示结果  
-![tensorboard展示结果](./images/DeepLearning/tensorflow_tensorboard.png)
+![tensorboard展示结果](./images/DeepLearning/tensorboard.png)
 ### PyTorch 测试示例
 #### 单机 
 ```shell
