@@ -46,7 +46,7 @@ qsctl cp -r qs://mydata/ data/
 
 ### Caffe 测试示例
 Caffe支持python接口，用户也可以根据需要重新配置编译，目前不支持多机分布式训练。
-####单机
+#### 单机
 单机示例：  
 ```shell
 cd /home/ubuntu/caffe  
@@ -107,4 +107,4 @@ cd /home/ubuntu/pytorch
 python mnist_dist.py
 ```
 pytorch 分布式训练结果  
-![pytorch 分布式训练结果](./images/DeepLearning/tensorflow_cluster_result.png)
+![pytorch 分布式训练结果](./images/DeepLearning/pytorch_cluster_result.png)
