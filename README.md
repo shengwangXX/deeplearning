@@ -8,7 +8,7 @@ TensorFlow由Google大脑主导开发，是一个分布式系统上的大规模�
 ### PyTorch
 PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主导开发。不同于TensorFlow，PyTorch采用动态计算图的方式，并提供良好的python接口，代码简单灵活，使用起来非常方便。内存分配也经过了优化，能支持分布式多机训练。
 # 青云深度学习平台
-青云提供了GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，集成了原生的Caffe， TensorFlow， PyTorch， 省去了用户搭建环境的麻烦， 提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
+青云提供了GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，集成了原生的Caffe， TensorFlow1.1， PyTorch， 省去了用户搭建环境的麻烦， 提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
 
 ## 部署 DeepLearning 服务
 
@@ -85,6 +85,10 @@ python mnist_dist.py --ps_hosts=192.168.1.6:2221 --worker_hosts=192.168.1.6:2223
 ```
 tensorflow 分布式训练结果  
 ![tensorflow 分布式训练结果](./images/DeepLearning/tensorflow_cluster_result.png)  
+
+TensorFlow中的tensorboard提供了训练过程中丰富的信息，默认端口号为`6066`。
+> 如果需要通过公网访问这些信息您需要先申请一个公网IP绑定在路由器上，在路由器上设置端口转发，同时打开防火墙相应的下行端口。为了方便查看tensorboard UI，也可参考 [VPN 隧道指南](https://docs.qingcloud.com/guide/vpn.html) 配置VPN。
+
 tensorboard展示结果  
 ![tensorboard展示结果](./images/DeepLearning/tensorboard.png)
 ### PyTorch 测试示例
