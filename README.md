@@ -8,7 +8,7 @@ TensorFlow由Google大脑主导开发，是一个分布式系统上的大规模�
 ### PyTorch
 PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主导开发。不同于TensorFlow，PyTorch采用动态计算图的方式，并提供良好的python接口，代码简单灵活，使用起来非常方便。内存分配也经过了优化，能支持分布式多机训练。
 # 青云深度学习平台
-青云提供了GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，集成了原生的Caffe， TensorFlow1.1， PyTorch， 省去了用户搭建环境的麻烦， 提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
+青云提供了GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，集成了原生的Caffe， TensorFlow(1.1)， PyTorch（0.2.0_3）， 省去了用户搭建环境的麻烦， 提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
 
 ## 部署 DeepLearning 服务
 
@@ -30,6 +30,7 @@ PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主
 
 - 出于安全考虑，所有的集群都需要部署在私有网络中，选择自己创建的已连接路由器的私有网络中。
 
+### 第4步：环境设置
 ![第4步：环境设置](./images/DeepLearning/env_config.png)
 
 - DeepLearning app与QingStor命令行工具集成,[配置](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html)
