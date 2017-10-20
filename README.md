@@ -30,14 +30,16 @@ PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主
 
 - 出于安全考虑，所有的集群都需要部署在私有网络中，选择自己创建的已连接路由器的私有网络中。
 
+![第4步：环境设置](./images/DeepLearning/env_config.png)
+
+- DeepLearning app与QingStor命令行工具集成,[配置](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html)
+QingStor相关参数，可以方便的从QingStor拉取数据。
+
 ## DeepLearning 测试
 以MNIST数据集为例，分别测试caffe, tensorflow, pytorch。MNIST数据集包含 0-9 10个数字，
 训练数据集包含 60,000 个样本, 测试数据集包含 10,000 样本. 数据集中的每张图片由 28 x 28 个像素点构成。
 > Deep Learning 训练往往需要大量的数据，数据存储经常占用很大的空间。青云QingStor可以存储海量数据，
-用户可以方便的把数据放在QingStor，再使用QingStor命令行工具快速的下载到本地。
-DeepLearning app与QingStor命令行工具集成，[配置](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html)
-QingStor命令行工具，可以方便的从QingStor拉取数据。  
-从QingStor获取数据：  
+用户可以方便的把数据放在QingStor，再使用QingStor命令行工具快速的下载到本地。如果在环境设置中配置好了QingStor(如果没有也可在本地[配置](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html))，从QingStor获取数据：  
 ```shell
 cd /home/ubuntu/tensorflow  
 mkdir data   
@@ -96,7 +98,7 @@ tensorboard展示结果
 ```shell
 cd /home/ubuntu/pytorch  
 python mnist.py
-```a
+```
 pytorch 训练结果  
 ![pytorch 训练结果](./images/DeepLearning/pytorch_result.png)
 #### 分布式
