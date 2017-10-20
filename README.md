@@ -96,7 +96,7 @@ tensorboard展示结果
 ```shell
 cd /home/ubuntu/pytorch  
 python mnist.py
-```
+```a
 pytorch 训练结果  
 ![pytorch 训练结果](./images/DeepLearning/pytorch_result.png)
 #### 分布式
