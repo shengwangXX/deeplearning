@@ -1,14 +1,14 @@
 # DeepLearning on QingCloud AppCenter 用户指南
 ## 深度学习简介
 2016年AlphaGo战胜李世石，预示我们进入了AI时代。深度学习是AI的核心技术，在图像分类，自然语言处理，无人驾驶等众多领域显示出了强大的能力，各大巨头纷纷投入巨资研发。语音助手，人脸识别，外文翻译等等，AI已融入到了我们生活的方方面面，极大了促进了社会的发展。其中Caffe, TensorFlow, PyTorch是主流的深度学习框架，拥有强大的社区支持，是实践深度学习不可或缺的工具。  
-### caffe
-Caffe是一个被广泛使用的深度学习框架，由BVLC开发。Caffe容易上手，训练速度快，组件模块化，并拥有大量训练好的经典模型。Caffe 在GPU上训练的性能很好，但只能支持单机多GPU的训练，不支持分布式多机训练。
+### Caffe
+Caffe是一个被广泛使用的深度学习框架，由BVLC开发。Caffe容易上手，训练速度快，组件模块化，并拥有大量训练好的经典模型。Caffe在GPU上训练的性能很好，但只能支持单机多GPU的训练，不支持分布式多机训练。
 ### TensorFlow
 TensorFlow由Google大脑主导开发，是一个分布式系统上的大规模深度学习框架。移植性好，可以运行在移动设备上，并支持分布式多机多卡训练，支持多种深度学习模型。TensorFlow还有功能强大的可视化组件TensorBoard，能可视化网络结构和训练过程，对于观察复杂的网络结构和监控长时间、大规模的训练很有帮助。
 ### PyTorch
 PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主导开发。不同于TensorFlow，PyTorch采用动态计算图的方式，并提供良好的python接口，代码简单灵活，使用起来非常方便。内存分配也经过了优化，能支持分布式多机训练。
 # 青云深度学习平台
-青云提供了GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，集成了原生的Caffe， TensorFlow(1.1)， PyTorch（0.2.0_3）， 省去了用户搭建环境的麻烦， 提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
+青云提供了NVIDIA Tesla P100 GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，集成了原生的Caffe， TensorFlow(1.1)， PyTorch（0.2.0_3），省去了用户搭建环境的麻烦，提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
 
 ## 部署 DeepLearning 服务
 
@@ -33,12 +33,12 @@ PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主
 ### 第4步：环境设置
 ![第4步：环境设置](./images/DeepLearning/env_config.png)
 
-- DeepLearning app与QingStor命令行工具集成,[配置](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html)
+- DeepLearning app与QingStor命令行工具集成，[配置](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html)
 QingStor相关参数，可以方便的从QingStor拉取数据。
 
 ## DeepLearning 测试
-以MNIST数据集为例，分别测试caffe, tensorflow, pytorch。MNIST数据集包含 0-9 10个数字，
-训练数据集包含 60,000 个样本, 测试数据集包含 10,000 样本. 数据集中的每张图片由 28 x 28 个像素点构成。
+以MNIST数据集为例，分别测试caffe，tensorflow，pytorch。MNIST数据集包含0-9 10个数字，
+训练数据集包含 60,000 个样本，测试数据集包含 10,000 样本，数据集中的每张图片由 28 x 28 个像素点构成。
 > Deep Learning 训练往往需要大量的数据，数据存储经常占用很大的空间。青云QingStor可以存储海量数据，
 用户可以方便的把数据放在QingStor，再使用QingStor命令行工具快速的下载到本地。如果在环境设置中配置好了QingStor(如果没有也可在本地[配置](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html))，从QingStor获取数据：  
 ```shell
@@ -70,7 +70,7 @@ tensorflow 训练结果
 ![tensorflow 训练结果](./images/DeepLearning/tensorflow_result.png)  
 
 #### 分布式：
-增加节点，在线扩容：在详情页点击 `新增节点` 按钮，可以对每个新增节点指定 IP 或选择自动分配。  
+增加节点，在线扩容：在详情页点击 `新增节点` 按钮，可以对每个新增节点指定IP或选择自动分配。  
 tensorflow 增加节点  
 ![tensorflow 增加节点](./images/DeepLearning/tensorflow_add_node.png)  
 Tensorflow 分布式训练需要指定parameter server 和 worker的IP地址和端口号（根据自己的IP进行修改）  
@@ -90,7 +90,7 @@ tensorflow 分布式训练结果
 ![tensorflow 分布式训练结果](./images/DeepLearning/tensorflow_cluster_result.png)  
 
 TensorFlow中的tensorboard提供了训练过程中丰富的信息，默认端口号为`6066`。
-> 如果需要通过公网访问这些信息您需要先申请一个公网IP绑定在路由器上，在路由器上设置端口转发，同时打开防火墙相应的下行端口。为了方便查看tensorboard UI，也可参考 [VPN 隧道指南](https://docs.qingcloud.com/guide/vpn.html) 配置VPN。
+> 如果需要通过公网访问这些信息您需要先申请一个公网IP绑定在路由器上，在路由器上设置端口转发，同时打开防火墙相应的下行端口。为了方便查看tensorboard UI，也可参考[VPN 隧道指南](https://docs.qingcloud.com/guide/vpn.html) 配置VPN。
 
 tensorboard展示结果  
 ![tensorboard展示结果](./images/DeepLearning/tensorboard.png)

@@ -105,6 +105,39 @@
             }]
         }]
     
-    }]
+    },{
+                "key": "env",
+                "description": "Service properties",
+                "type": "array",
+                "properties": [
+		    {
+            		"key": "QingStor",
+			"label": "QingStor",
+			"description": "Whether to use QingStor or not",
+			"type": "boolean",
+			"default": false,
+		        "range": [true,false],
+		        "required":"no"
+		    },
+		    {
+			"key": "access_key",
+	                "label": "access_key",
+            		"description": "QingStor access_key",
+            		"type": "password",
+			"pattern": "[A-Z]{20}|^$",
+		        "default": "",
+		        "required":"no"
+	            },
+	            {
+            		"key": "secret_key",
+            		"label": "secret_key",
+            		"description": "QingStor secret_key",
+            		"type": "password",
+			"pattern": "[A-Za-z0-9]{40}|^$",
+            		"default": "",
+            		"required":"no"
+		    }
+		]
+	}]
 }
 
