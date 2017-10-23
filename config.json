@@ -28,7 +28,7 @@
         }, {
             "key": "dl_node",
             "label": "dl Node",
-            "description": "role-based node properties",
+            "description": "node properties",
             "type": "array",
             "properties": [{
                 "key": "cpu",
@@ -121,8 +121,8 @@
 		    },
 		    {
 			"key": "access_key",
-	                "label": "access_key",
-            		"description": "QingStor access_key",
+	                "label": "access key",
+            		"description": "QingStor access key",
             		"type": "password",
 			"pattern": "[A-Z]{20}|^$",
 		        "default": "",
@@ -130,8 +130,8 @@
 	            },
 	            {
             		"key": "secret_key",
-            		"label": "secret_key",
-            		"description": "QingStor secret_key",
+            		"label": "secret key",
+            		"description": "QingStor secret key",
             		"type": "password",
 			"pattern": "[A-Za-z0-9]{40}|^$",
             		"default": "",
