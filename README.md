@@ -5,10 +5,12 @@
 Caffe是一个被广泛使用的深度学习框架，由BVLC开发。Caffe容易上手，训练速度快，组件模块化，并拥有大量训练好的经典模型。Caffe在GPU上训练的性能很好，但只能支持单机多GPU的训练，不支持分布式多机训练。
 ### TensorFlow
 TensorFlow由Google大脑主导开发，是一个分布式系统上的大规模深度学习框架。移植性好，可以运行在移动设备上，并支持分布式多机多卡训练，支持多种深度学习模型。TensorFlow还有功能强大的可视化组件TensorBoard，能可视化网络结构和训练过程，对于观察复杂的网络结构和监控长时间、大规模的训练很有帮助。
+### keras
+Keras是一个高层神经网络API，由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。Keras高度模块化，能快速搭建神经网络，并且非常容易上手。
 ### PyTorch
 PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主导开发。不同于TensorFlow，PyTorch采用动态计算图的方式，并提供良好的python接口，代码简单灵活，使用起来非常方便。内存分配也经过了优化，能支持分布式多机训练。
 # 青云深度学习平台
-青云提供了NVIDIA Tesla P100 GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，集成了原生的Caffe， TensorFlow(1.2)， PyTorch（0.2.0_3），省去了用户搭建环境的麻烦，提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
+青云提供了NVIDIA Tesla P100 GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，在python2.7上集成了原生的Caffe(BVLC)， TensorFlow(1.2.1)， keras(2.0.8)，PyTorch（0.2.0_3），省去了用户搭建环境的麻烦，提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
 
 ## 部署 DeepLearning 服务
 
@@ -94,6 +96,14 @@ TensorFlow中的tensorboard提供了训练过程中丰富的信息，默认端�
 
 tensorboard展示结果  
 ![tensorboard展示结果](./images/DeepLearning/tensorboard.png)
+### Keras 测试示例
+#### 单机 
+```shell
+cd /home/ubuntu/keras  
+python mnist.py
+```
+keras 训练结果  
+![keras 训练结果](./images/DeepLearning/keras_result.png)
 ### PyTorch 测试示例
 #### 单机 
 ```shell
