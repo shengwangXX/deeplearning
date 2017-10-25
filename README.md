@@ -50,7 +50,8 @@ qsctl cp -r qs://mydata/ data/
 ```
 
 ### Caffe 测试示例
-Caffe支持python接口，用户也可以根据需要重新配置编译，目前不支持多机分布式训练。
+Caffe支持python接口，用户也可以根据需要重新配置编译，目前不支持多机分布式训练。  
+**Caffe预先用GPU版本进行编译，如果选择的GPU的个数为0,需修改配置文件，重新编译。**
 #### 单机
 单机示例：  
 ```shell
@@ -112,7 +113,8 @@ python mnist.py
 ```
 pytorch 训练结果  
 ![pytorch 训练结果](./images/DeepLearning/pytorch_result.png)
-#### 分布式
+#### 分布式  
+**pytorch分布式训练时，每个节点的GPU个数应该大于1个，否则容易出现错误。**
 节点1：  
 ```shell
 cd /home/ubuntu/pytorch   
