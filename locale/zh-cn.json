@@ -19,7 +19,7 @@
 	"GPU Class":"GPU 类型",
 	"The gpu type for the cluster to run，such as high performance":"集群运行的GPU类型，例如高性能",
 	"instance Class": "资源类型",
-	"The instance type for dl to run，such as high performance，high performance plus": "深度学习集群的实例类型运行，例如高性能、高性能 +",
+	"The instance type for dl to run，such as high performance，high performance plus": "深度学习集群运行节点的类型，例如高性能、高性能+",
 	"Volume Size": "节点容量",
 	"The volume size for each node":"每个节点存储空间大小",
 	"Service properties": "服务属性",
