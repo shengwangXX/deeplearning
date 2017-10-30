@@ -94,6 +94,7 @@ tensorflow 分布式训练结果
 
 TensorFlow中的tensorboard提供了训练过程中丰富的信息，默认端口号为`6066`。
 > 如果需要通过公网访问这些信息您需要先申请一个公网IP绑定在路由器上，在路由器上设置端口转发，同时打开防火墙相应的下行端口。为了方便查看tensorboard UI，也可参考[VPN 隧道指南](https://docs.qingcloud.com/guide/vpn.html) 配置VPN。  
+
 开启tensorboard服务
 ```shell
 tensorboard --logdir=./tflog/
