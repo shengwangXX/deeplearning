@@ -6,11 +6,11 @@ Caffe是一个被广泛使用的深度学习框架，由BVLC开发。Caffe容易
 ### TensorFlow
 TensorFlow由Google大脑主导开发，是一个分布式系统上的大规模深度学习框架。移植性好，可以运行在移动设备上，并支持分布式多机多卡训练，支持多种深度学习模型。TensorFlow还有功能强大的可视化组件TensorBoard，能可视化网络结构和训练过程，对于观察复杂的网络结构和监控长时间、大规模的训练很有帮助。
 ### Keras
-Keras是一个高层神经网络API，由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。Keras高度模块化，能快速搭建神经网络，并且非常容易上手。
+Keras是一个高层神经网络API，由Python编写，通过调用其他深度学习框架来进行计算，如Tensorflow、Theano以及CNTK。Keras高度模块化，能快速搭建神经网络，并且非常容易上手。
 ### PyTorch
 PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主导开发。不同于TensorFlow，PyTorch采用动态计算图的方式，并提供良好的python接口，代码简单灵活，使用起来非常方便。内存分配也经过了优化，能支持分布式多机训练。
 # 青云深度学习平台
-青云提供了NVIDIA Tesla P100 GPU主机，并搭建好了深度学习平台供用户使用。主机上配置了CUDA8.0和cudnn5，在python2.7上集成了原生的Caffe(BVLC)， TensorFlow(1.2.1)，keras(2.0.8)，PyTorch（0.2.0_3），省去了用户搭建环境的麻烦，提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
+基于青云提供的NVIDIA Tesla P100 GPU，青云深度学习平台配置了CUDA8.0和cudnn5，并安装了流行的深度学习框架，如Caffe(BVLC)， TensorFlow(1.2.1)，keras(2.0.8)，PyTorch（0.2.0_3），省去了用户搭建环境的麻烦，提高开发效率。用户无需修改代码，即可把本地的代码运行在云上，还能动态扩展所需资源。
 
 ## 部署 DeepLearning 服务
 
@@ -36,7 +36,7 @@ PyTorch从Torch发展而来，并经过了大量改进，由FaceBook AI团队主
 ![第4步：环境设置](./images/DeepLearning/env_config.png)
 
 - DeepLearning app与QingStor命令行工具集成，[配置](https://docs.qingcloud.com/qingstor/command_line_tools/qsctl.html)
-QingStor相关参数，可以方便的从QingStor拉取数据。
+QingStor相关参数，可以方便的从QingStor拉取数据。如果QingStor选用false，access_key_id和secret_access_key则无需填写。
 
 ## DeepLearning 测试
 以MNIST数据集为例，分别测试caffe，tensorflow，pytorch。MNIST数据集包含0-9 10个数字，
@@ -93,11 +93,15 @@ tensorflow 分布式训练结果
 ![tensorflow 分布式训练结果](./images/DeepLearning/tensorflow_cluster_result.png)  
 
 TensorFlow中的tensorboard提供了训练过程中丰富的信息，默认端口号为`6066`。
-> 如果需要通过公网访问这些信息您需要先申请一个公网IP绑定在路由器上，在路由器上设置端口转发，同时打开防火墙相应的下行端口。为了方便查看tensorboard UI，也可参考[VPN 隧道指南](https://docs.qingcloud.com/guide/vpn.html) 配置VPN。
-
+> 如果需要通过公网访问这些信息您需要先申请一个公网IP绑定在路由器上，在路由器上设置端口转发，同时打开防火墙相应的下行端口。为了方便查看tensorboard UI，也可参考[VPN 隧道指南](https://docs.qingcloud.com/guide/vpn.html) 配置VPN。  
+开启tensorboard服务
+```shell
+tensorboard --logdir=./tflog/
+```
 tensorboard展示结果  
 ![tensorboard展示结果](./images/DeepLearning/tensorboard.png)
-### Keras 测试示例
+### Keras 测试示例  
+目前Keras只支持Tensorflow作为其计算框架。  
 #### 单机 
 ```shell
 cd /home/ubuntu/keras  
